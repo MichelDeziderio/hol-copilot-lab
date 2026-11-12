@@ -25,7 +25,8 @@
   justify-content: center;
 }
 
-.app-header nav a {
+.app-header nav a,
+.app-header nav > button {
   color: white;
   text-decoration: none;
   font-weight: 500;
@@ -34,7 +35,16 @@
   transition: all 0.3s ease;
 }
 
-.app-header nav a:hover {
+.app-header nav > button {
+  font: inherit;
+  font-weight: 500;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.app-header nav a:hover,
+.app-header nav > button:hover {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
@@ -265,6 +275,43 @@
 .review-form h3 {
     margin-top: 0;
     margin-bottom: 1rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button,
+.contact-continue-btn {
+  padding: 0.5rem 1rem;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button:hover,
+.contact-continue-btn:hover {
+  background-color: #5a6fd8;
 }
 
 .review-form input,
