@@ -1,56 +1,86 @@
+```md
 # The Daily Harvest
 
-A modern TypeScript-based shopping website built with React and Vite.
+A shopping website built with React, TypeScript, and Vite.
 
-## 🚀 Getting Started
+## Quick Start Guide
 
 ### Prerequisites
 
-- Node.js (version 18 or higher)
-- npm or yarn
+- Node.js 18 or newer
+- npm
 
-### Installation
+### Set up and run locally
 
-1. Navigate to the eCommApp directory:
-   ```bash
-   cd eCommApp
-   ```
+From the repository root, run:
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and visit `http://localhost:3000`
-
-## 📁 Project Structure
-
+```bash
+cd eCommApp
+npm ci
+npm run dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser. Vite is configured to open the browser automatically.
+
+Product information is loaded from local JSON files in `public/products/`; no separate API server is needed for the product catalog.
+
+## Key commands
+
+Run these commands from the `eCommApp` directory:
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server on port 3000 |
+| `npm run build` | Type-check the project and create a production build in `dist/` |
+| `npm run preview` | Preview the production build locally; run `npm run build` first |
+| `npm run lint` | Run ESLint |
+| `npm run test` | Run Vitest in watch mode |
+| `npm run test:run` | Run all tests once |
+| `npm run test:ui` | Open the Vitest UI |
+| `npm run test:coverage` | Run tests and generate coverage reports |
+
+## Tests
+
+Tests use Vitest, jsdom, and React Testing Library. The shared test setup is in `src/test/setup.ts`. To run the suite once:
+
+```bash
+npm run test:run
+```
+
+To run tests while developing:
+
+```bash
+npm run test
+```
+
+Test files use the `*.test.ts` or `*.test.tsx` naming pattern. For example, `src/components/CartPage.test.tsx` covers cart page rendering.
+
+## Important files
+
+```text
 eCommApp/
-├── public/              # Static assets
+├── public/
+│   ├── products/              # Product JSON data
+│   └── products/productImages/ # Product images
 ├── src/
-│   ├── components/      # Reusable React components
-│   ├── types/          # TypeScript type definitions
-│   ├── utils/          # Utility functions
-│   ├── App.tsx         # Main App component
-│   ├── App.css         # App styles
-│   ├── main.tsx        # Application entry point
-│   └── index.css       # Global styles
-├── index.html          # HTML template
-├── package.json        # Project dependencies
-├── tsconfig.json       # TypeScript configuration
-├── vite.config.ts      # Vite configuration
-└── README.md          # This file
+│   ├── components/            # Pages and reusable UI components
+│   ├── context/CartContext.tsx # Shared shopping cart state
+│   ├── test/                  # Test setup and test utilities
+│   ├── types/                 # Shared TypeScript types
+│   ├── utils/                 # Helper functions
+│   ├── App.tsx                 # Routes and app-level providers
+│   └── main.tsx                # React entry point and router
+├── index.html                  # Vite HTML entry point
+├── package.json                # Scripts and dependencies
+├── vite.config.ts              # Vite server and Vitest configuration
+└── README.md
 ```
 
-## 🛠️ Available Scripts
+## Application routes
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
+- `/` — Home page
+- `/products` — Product catalog
+- `/cart` — Shopping cart
+- `/login` — Login page
+- `/admin` — Admin page
+```
